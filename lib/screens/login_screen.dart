@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -20,10 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
         _isLoading = true;
       });
 
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
 
-      if (_emailController.text == 'doctor' &&
-          _passwordController.text == '12345') {
+      if (_emailController.text == 'a' &&
+          _passwordController.text == '54321') {
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         _showErrorDialog('Credenciales incorrectas. Inténtalo de nuevo.');
@@ -39,11 +41,11 @@ class _LoginScreenState extends State<LoginScreen> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('Error de acceso'),
+        title: const Text('Error de acceso'),
         content: Text(message),
         actions: <Widget>[
           ElevatedButton(
-            child: Text('OK'),
+            child: const Text('OK'),
             onPressed: () {
               Navigator.of(ctx).pop();
             },
@@ -67,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(height: 60),
+                  const SizedBox(height: 60),
                   CircleAvatar(
                     radius: 50,
                     backgroundColor: Colors.transparent,
@@ -77,8 +79,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: 70,
                     ),
                   ),
-                  SizedBox(height: 20),
-                  Text(
+                  const SizedBox(height: 20),
+                  const Text(
                     'Welcome to Rosales Dental',
                     style: TextStyle(
                       fontSize: 24,
@@ -86,20 +88,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.black87,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     'Please enter your details to login.',
                     style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                   ),
-                  SizedBox(height: 30),
-                  Align(
+                  const SizedBox(height: 30),
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Email:',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   TextFormField(
                     controller: _emailController,
                     decoration: InputDecoration(
@@ -115,15 +117,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 15),
-                  Align(
+                  const SizedBox(height: 15),
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Password:',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   TextFormField(
                     controller: _passwordController,
                     decoration: InputDecoration(
@@ -140,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Checkbox(
@@ -151,13 +153,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                       ),
-                      Text('Remember me?'),
+                      const Text('Remember me?'),
                       Expanded(
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
                             onPressed: () {},
-                            child: Text(
+                            child: const Text(
                               'Forget your password or email?',
                               style: TextStyle(
                                 color: Colors.black,
@@ -169,34 +171,34 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   _isLoading
-                      ? CircularProgressIndicator()
+                      ? const CircularProgressIndicator()
                       : ElevatedButton(
                           onPressed: _login,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             foregroundColor: Colors.black,
-                            side: BorderSide(color: Colors.grey),
+                            side: const BorderSide(color: Colors.grey),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            minimumSize: Size(double.infinity, 50),
+                            minimumSize: const Size(double.infinity, 50),
                           ),
-                          child: Text('Login'),
+                          child: const Text('Login'),
                         ),
-                  SizedBox(height: 20),
-                  Row(
+                  const SizedBox(height: 20),
+                  const Row(
                     children: <Widget>[
                       Expanded(child: Divider(thickness: 1)),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
                         child: Text("Or sign in with"),
                       ),
                       Expanded(child: Divider(thickness: 1)),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -207,19 +209,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.black,
-                          side: BorderSide(color: Colors.grey),
+                          side: const BorderSide(color: Colors.grey),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          minimumSize: Size(double.infinity, 50),
+                          minimumSize: const Size(double.infinity, 50),
                         ),
-                        child: SizedBox(
+                        child: const SizedBox(
                           height: 24,
                           width: 24,
                           child: Icon(Icons.g_mobiledata),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
                           // Lógica para iniciar sesión con Microsoft
@@ -227,13 +229,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.black,
-                          side: BorderSide(color: Colors.grey),
+                          side: const BorderSide(color: Colors.grey),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          minimumSize: Size(double.infinity, 50),
+                          minimumSize: const Size(double.infinity, 50),
                         ),
-                        child: SizedBox(
+                        child: const SizedBox(
                           height: 24,
                           width: 24,
                           child: Icon(Icons.window),
@@ -241,14 +243,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   TextButton(
                     onPressed: () {
                       // Navegar a la pantalla de registro
                     },
-                    child: Text("Don't have an account? Register now"),
+                    child: const Text("Don't have an account? Register now"),
                   ),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                 ],
               ),
             ),

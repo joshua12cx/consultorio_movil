@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'custom_drawer.dart'; // Importa el CustomDrawer
 
 class NuevaCitaScreen extends StatefulWidget {
+  const NuevaCitaScreen({super.key});
+
   @override
   _NuevaCitaScreenState createState() => _NuevaCitaScreenState();
 }

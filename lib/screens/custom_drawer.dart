@@ -1,5 +1,3 @@
-// lib/screens/custom_drawer.dart
-
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -7,10 +5,18 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> menuItems = [
+      {'icon': Icons.home, 'label': 'Inicio', 'route': '/home'},
+      {'icon': Icons.calendar_today, 'label': 'Citas', 'route': '/nueva_cita'},
+      {'icon': Icons.calendar_month, 'label': 'Agenda', 'route': '/agenda'},
+      {'icon': Icons.payment, 'label': 'Pagos', 'route': '/pagos'},
+      {'icon': Icons.logout, 'label': 'Cerrar sesión', 'route': '/login'},
+    ];
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: <Widget>[
+        children: [
           const UserAccountsDrawerHeader(
             accountName: Text('Ramiro Paredes'),
             accountEmail: Text('ramiro@gmail.com'),
@@ -19,41 +25,11 @@ class CustomDrawer extends StatelessWidget {
               child: Icon(Icons.person, size: 50, color: Colors.blue),
             ),
           ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Inicio'),
-            onTap: () {
-              Navigator.pushReplacementNamed(context, '/home');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.calendar_today),
-            title: const Text('Citas'),
-            onTap: () {
-              Navigator.pushNamed(context, '/nueva_cita'); // Asegúrate de tener esta ruta configurada
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.calendar_today),
-            title: const Text('Agenda'),
-            onTap: () {
-              Navigator.pushNamed(context, '/agenda');
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.payment),
-            title: const Text('Pagos'),
-            onTap: () {
-              Navigator.pushNamed(context, '/pagos'); // Asegúrate de tener esta ruta configurada
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text('Cerrar sesión'),
-            onTap: () {
-              Navigator.pushReplacementNamed(context, '/login');
-            },
-          ),
+          ...menuItems.map((item) => ListTile(
+                leading: Icon(item['icon']),
+                title: Text(item['label']),
+                onTap: () => Navigator.pushNamed(context, item['route']),
+              )),
         ],
       ),
     );
